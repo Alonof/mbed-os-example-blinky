@@ -1,11 +1,13 @@
 #include "mbed.h"
 #include "FlashIAP.h"
-
-
 #include "mbed.h"
+
+#define DBG 1
 DigitalOut led1(LED1);
 DigitalOut led2(LED2);
+#if DBG
 Serial pc(USBTX, USBRX);
+#endif
 
 // main() runs in its own thread in the OS
 void flashiap_init_test()
@@ -15,8 +17,8 @@ void flashiap_init_test()
     flash_device.deinit();
 }
 
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
-void flashiap_program_test()
+//#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+uint32_t flashiap_program_test()
 {
     FlashIAP flash_device;
     uint32_t ret = flash_device.init();
@@ -34,7 +36,9 @@ void flashiap_program_test()
     for(int i = 0; i < 10; i++)
     {
     	address = flash_device.get_flash_start() + (sector_size * i);
+#if DBG
 		pc.printf("address = 0x%x\n\r",address);
+#endif        
 		ret = flash_device.erase(address, sector_size);
     }
 
@@ -61,13 +65,16 @@ void flashiap_program_test()
     delete[] data_flashed;
 
     ret = flash_device.deinit();
+    return ret;
 }
 
 
 int main()
 {
+#if DBG
 	pc.baud(115200);
 	pc.printf("START \n\r");
+#endif    
     led2 = !led2;
     led2 = !led2;
     wait(2);
@@ -79,7 +86,9 @@ int main()
     {
         led1 = !led1;
         //led2 = !led2;
+#if DBG
         pc.printf("LED \n\r");
+#endif
         wait(1);
     }
 }
