@@ -7,6 +7,7 @@ mbed-os/features/net/*
 mbed-os/features/netsocket/*
 mbed-os/features/storage/*
 mbed-os/events/*
+mbed-os/features/nfc/*
 mbed-os/features/nanostack/*
 mbed-os/features/lorawan/*
 mbed-os/features/lwipstack/*
@@ -18,6 +19,7 @@ mbed-os/features/cellular/*
 mbed-os/features/filesystem/littlefs/*
 mbed-os/features/filesystem/fat/*
 mbed-os/features/device_key/*
+mbed-os/components/*
 mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F437xG/TARGET_UBLOX_C030/onboard_modem_api.c
 mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F437xG/TARGET_UBLOX_C030/onboard_modem_api.h
 mbed-os/targets/TARGET_STM/TARGET_STM32F4/TARGET_STM32F437xG/TARGET_UBLOX_C030/min_battery_voltage.c
